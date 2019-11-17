@@ -213,16 +213,16 @@
            function GeneraConfiguracion(){
                 //seleccion del puerto
                 var select = document.getElementById('provincia');
-                var selectedOption = select.options[select.selectedIndex];
-                if(selectedOption.value == ""){
+                var selectedPort = select.options[select.selectedIndex];
+                if(selectedPort.value == ""){
                     
                     document.getElementById("Codigo").innerHTML ="Elige un puerto";  
                     return
                 }else{
                    //obtiene el valor numerico
                     //console.log(selectedOption.getAttribute("bitNumber"));
-                    var namePort=selectedOption.value;
-                    var bitnumberPort=selectedOption.getAttribute("bitNumber");
+                    var namePort=selectedPort.value;
+                    var bitnumberPort=selectedPort.getAttribute("bitNumber");
                 }
                 //Selecion de Pines a Encender
                 var On;
@@ -349,56 +349,114 @@
                 //obtencion del valor de PCTL
                 var PCTLHexadecimal
                 var PCTL
+                var ClearPCLT
+                var ALFSEL
                 select=document.getElementById("PCTL7");
+                if(select.value==0){
+                  ClearPCLT="F";
+                  ALFSEL="0"
+                }else{
+                  ClearPCLT="0";
+                  ALFSEL="1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTL.toString(16);
                 
                 select=document.getElementById("PCTL6");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
 
                 select=document.getElementById("PCTL5");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
 
                 select=document.getElementById("PCTL4");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
 
                 select=document.getElementById("PCTL3");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
 
                 select=document.getElementById("PCTL2");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
 
                 select=document.getElementById("PCTL1");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
 
                 select=document.getElementById("PCTL0");
+                if(select.value==0){
+                  ClearPCLT=ClearPCLT+"F";
+                  ALFSEL=ALFSEL+"0"
+                }else{
+                  ClearPCLT=ClearPCLT+"0";
+                  ALFSEL=ALFSEL+"1"
+                }
                 PCTL=parseInt(select.value);
                 PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
-
-
+                // CONVERTIR ALFSEL A HEXADECIMAL
+                ALFSEL=parseInt(ALFSEL,2)
+                var ALFSELHexadecimal=ALFSEL.toString(16);
                 console.log(PCTLHexadecimal);
                 //impresion de contenido
-                document.getElementById("Codigo").innerHTML = "PUERTO :"+selectedOption.value+
+                document.getElementById("Codigo").innerHTML = "PUERTO :"+selectedPort.value+
                 "<br> BIT ACTIVATION:"+bitnumberPort+
                 "<br> PINES ENCENDIDOS :0x"+OnHexadecimal+  
                 "<br> PINES ENTRADA SALIDA :0x"+IOHexadecimal+
-                "<br> PCTL: 0X"+PCTLHexadecimal;
-                /*
-                SYSCTL_RCGCGPIO_R |=SYSCTL_RCGCGPIO_R9; //HABILITA EL PUERTO K
-                while ((SYSCTL_PRGPIO_R&SYSCTL_PRGPIO_R9)==0){};
-                GPIO_PORTK_DIR_R |=0x81;
-                GPIO_PORTK_AFSEL_R |=0x80;
-                GPIO_PORTK_DEN_R |=0x81;
+                "<br> PCTL: 0X"+PCTLHexadecimal+
+                "<p> SYSCTL_RCGCGPIO_R |=SYSCTL_RCGCGPIO_R"+bitnumberPort+";"+ //HABILITA EL PUERTO K
+                "<br>while ((SYSCTL_PRGPIO_R&SYSCTL_PRGPIO_R"+bitnumberPort+")==0){};"+
+                "<br>GPIO_PORT"+selectedPort.value+"_DIR_R |="+IOHexadecimal+";"+
+                "<br>GPIO_PORT"+selectedPort.value+"_AFSEL_R |="+ALFSELHexadecimal+";"+
+                "<br>GPIO_PORT"+selectedPort.value+"_DEN_R |="+OnHexadecimal+";"+
                   
-                GPIO_PORTK_PCTL_R=(GPIO_PORTK_PCTL_R&0X0FFFFFFF)+0x50000000;	
-                GPIO_PORTK_AMSEL_R=0x00;
-                */
+                "<br>GPIO_PORT"+selectedPort.value+"_PCTL_R=(GPIO_PORTK_PCTL_R&"+ClearPCLT+")+"+PCTLHexadecimal+";"+
+                "<br>GPIO_PORT"+selectedPort.value+"_AMSEL_R=0X00;"+
+                "<p>"
                 return
             }
         </script>
