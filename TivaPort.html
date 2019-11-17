@@ -207,9 +207,9 @@
         <input type="number"  min="1" max="15" id="PCTL0" value="0"><br>
         <br>
         <br><br>
-        <p id="Codigo"></p>
+        <p id="Errores"></p>
         <button onclick="GeneraConfiguracion()">get code</button>
-       
+        <p id="Codigo"></p>
         <script>
            function GeneraConfiguracion(){
                 //seleccion del puerto
@@ -217,7 +217,7 @@
                 var selectedPort = select.options[select.selectedIndex];
                 if(selectedPort.value == ""){
                     
-                    document.getElementById("Codigo").innerHTML ="Elige un puerto";  
+                    document.getElementById("Errores").innerHTML ="Elige un puerto";  
                     return
                 }else{
                    //obtiene el valor numerico
