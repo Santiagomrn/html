@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS: Selecting by class</title>
+        <style>
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 40px;
+              height: 22px;
+            }
+            
+            .switch input { 
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+            
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+            
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 15px;
+              width: 15px;
+              left: 4px;
+              bottom: 4px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+            
+            input:checked + .slider {
+              background-color: #2196F3;
+            }
+            
+            input:focus + .slider {
+              box-shadow: 0 0 1px #2196F3;
+            }
+            
+            input:checked + .slider:before {
+              -webkit-transform: translateX(20px);
+              -ms-transform: translateX(20px);
+              transform: translateX(20px);
+            }
+            
+            /* Rounded sliders */
+            .slider.round {
+              border-radius: 20px;
+            }
+            
+            .slider.round:before {
+              border-radius: 50%;
+            }
+            </style>
+    </head>
+    <body>
+        <h1>seleccione un puerto</h1>
+        <select name="Port" id="provincia">
+            <option selected value=""> Elige una opción </option>
+            <optgroup label="Puertos"> 
+            <option value="A" bitNumber="0">A</option>
+            <option value="B"  bitNumber="1">B</option>
+            <option value="C"  bitNumber="2">C</option>
+            <option value="D"  bitNumber="3">D</option>
+            <option value="E"  bitNumber="4">E</option>
+            <option value="F"  bitNumber="5">F</option>
+            <option value="G"  bitNumber="6">G</option>
+            <option value="H"  bitNumber="7">H</option>
+            <option value="J"  bitNumber="8">I</option>
+            <option value="K"  bitNumber="9">J</option>
+            <option value="L"  bitNumber="10">K</option>
+            <option value="M"  bitNumber="11">L</option>
+            <option value="N"  bitNumber="12">M</option>
+            <option value="P"  bitNumber="13">M</option>
+            <option value="Q"  bitNumber="14">M</option>
+        </select>  
+        <br><br>
+        <h2>Selecione puertos que desea encender</h2>
+        <spam>P7 :</spam>
+        <label  class="switch">
+            <input id="OnPin7" type="checkbox" >
+            <span class="slider round"></span>
+        </label>
+        
+        <br>
+        <spam>P6 :</spam>
+        <label  class="switch">
+          <input id="OnPin6" type="checkbox" '>
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P5 :</spam>
+        <label  class="switch">
+          <input id="OnPin5" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P4 :</spam>
+        <label  class="switch">
+          <input id="OnPin4" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P3 :</spam>
+        <label  class="switch">
+          <input id="OnPin3" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P2 :</spam>
+        <label  class="switch">
+          <input id="OnPin2" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P1 :</spam>
+        <label  class="switch">
+          <input id="OnPin1" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P0 :</spam>
+        <label  class="switch">
+          <input id="OnPin0" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+       
+        <br><br>
+       <h2>Selecione como entrada o salida</h2>
+        <spam>P7 :</spam>
+        <label  class="switch">
+            <input id="IOPin7" type="checkbox" >
+            <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P6 :</spam>
+        <label  class="switch">
+          <input id="IOPin6" type="checkbox" '>
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P5 :</spam>
+        <label  class="switch">
+          <input id="IOPin5" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P4 :</spam>
+        <label  class="switch">
+          <input id="IOPin4" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P3 :</spam>
+        <label  class="switch">
+          <input id="IOPin3" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P2 :</spam>
+        <label  class="switch">
+          <input id="IOPin2" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P1 :</spam>
+        <label  class="switch">
+          <input id="IOPin1" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <spam>P0 :</spam>
+        <label  class="switch">
+          <input id="IOPin0" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <br>
+        <br><br>
+        <h2>Ingrese funcion digital especial en decimal</h2>
+        <spam>P7 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL7" value="0"><br>
+        <spam>P6 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL6" value="0"><br>
+        <spam>P5 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL5" value="0"><br>
+        <spam>P4 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL4" value="0"><br>
+        <spam>P3 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL3" value="0"><br>
+        <spam>P2 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL2" value="0"><br>
+        <spam>P1 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL1" value="0"><br>
+        <spam>P0 :</spam>
+        <input type="number"  min="1" max="15" id="PCTL0" value="0"><br>
+        <br>
+        <br><br>
+        <button onclick="GeneraConfiguracion()">Click me</button>
+        <p id="Codigo"></p>
+        <script>
+           function GeneraConfiguracion(){
+                //seleccion del puerto
+                var select = document.getElementById('provincia');
+                var selectedOption = select.options[select.selectedIndex];
+                if(selectedOption.value == ""){
+                    
+                    document.getElementById("Codigo").innerHTML ="Elige un puerto";  
+                    return
+                }else{
+                   //obtiene el valor numerico
+                    //console.log(selectedOption.getAttribute("bitNumber"));
+                    var namePort=selectedOption.value;
+                    var bitnumberPort=selectedOption.getAttribute("bitNumber");
+                }
+                //Selecion de Pines a Encender
+                var On;
+                //pin 7
+                select=document.getElementById("OnPin7")
+                if(select.checked){
+                  On="1";
+                }else{
+                  On="0";
+                }
+                //pin 6
+                select=document.getElementById("OnPin6")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                //pin 5
+                select=document.getElementById("OnPin5")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                //pin 4
+                select=document.getElementById("OnPin4")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                //pin 3
+                select=document.getElementById("OnPin3")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                //pin 2
+                select=document.getElementById("OnPin2")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                //pint 1
+                select=document.getElementById("OnPin1")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                //pin 0
+                select=document.getElementById("OnPin0")
+                if(select.checked){
+                  On=On+"1";
+                }else{
+                  On=On+"0";
+                }
+                // convercion de hexadecimal
+                let decimalTemporal = parseInt(On, 2); // Desde la base 2
+                var OnHexadecimal = decimalTemporal.toString(16); // Hacia la base 16
+                //Seleccion de pines como entrada o salida
+                var IO;
+                //pin 7
+                select=document.getElementById("IOPin7")
+                if(select.checked){
+                  IO="1";
+                }else{
+                  IO="0";
+                }
+                //pin 6
+                select=document.getElementById("IOPin6")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //pin 5
+                select=document.getElementById("IOPin5")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //pin 4
+                select=document.getElementById("IOPin4")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //pin 3
+                select=document.getElementById("IOPin3")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //pin 2
+                select=document.getElementById("IOPin2")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //pint 1
+                select=document.getElementById("IOPin1")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //pin 0
+                select=document.getElementById("IOPin0")
+                if(select.checked){
+                  IO=IO+"1";
+                }else{
+                  IO=IO+"0";
+                }
+                //conversion de binario a hexadecimal
+                 decimalTemporal = parseInt(IO, 2); // Desde la base 2
+                var IOHexadecimal = decimalTemporal.toString(16); // Hacia la base 16
+                //obtencion del valor de PCTL
+                var PCTLHexadecimal
+                var PCTL
+                select=document.getElementById("PCTL7");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTL.toString(16);
+                
+                select=document.getElementById("PCTL6");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+                select=document.getElementById("PCTL5");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+                select=document.getElementById("PCTL4");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+                select=document.getElementById("PCTL3");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+                select=document.getElementById("PCTL2");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+                select=document.getElementById("PCTL1");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+                select=document.getElementById("PCTL0");
+                PCTL=parseInt(select.value);
+                PCTLHexadecimal=PCTLHexadecimal+PCTL.toString(16);
+
+
+                console.log(PCTLHexadecimal);
+                //impresion de contenido
+                document.getElementById("Codigo").innerHTML = "PUERTO :"+selectedOption.value+
+                "<br> BIT ACTIVATION:"+bitnumberPort+
+                "<br> PINES ENCENDIDOS :0x"+OnHexadecimal+  
+                "<br> PINES ENTRADA SALIDA :0x"+IOHexadecimal+
+                "<br> PCTL: 0X"+PCTLHexadecimal;
+                /*
+                SYSCTL_RCGCGPIO_R |=SYSCTL_RCGCGPIO_R9; //HABILITA EL PUERTO K
+                while ((SYSCTL_PRGPIO_R&SYSCTL_PRGPIO_R9)==0){};
+                GPIO_PORTK_DIR_R |=0x81;
+                GPIO_PORTK_AFSEL_R |=0x80;
+                GPIO_PORTK_DEN_R |=0x81;
+                  
+                GPIO_PORTK_PCTL_R=(GPIO_PORTK_PCTL_R&0X0FFFFFFF)+0x50000000;	
+                GPIO_PORTK_AMSEL_R=0x00;
+                */
+                return
+            }
+        </script>
+    </body>
+  
+
+    </html>
